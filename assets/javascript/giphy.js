@@ -1,15 +1,23 @@
 // API key = Qghqbph3XryMCV9tmFuZEsm2Y3gRxola
+// var input = $("#userInput").val()
 
-// var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=YOUR_API_KEY&limit=5");
+function getData(){
 
-// xhr.done(function(data) { console.log("success got data", data); });
+    var input = $("#userInput").val()
+   
 
-var xhr = $.get("http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=Qghqbph3XryMCV9tmFuZEsm2Y3gRxola&limit=25");
+    var xhr = $.get("http://api.giphy.com/v1/gifs/search?q="+input+"&api_key=Qghqbph3XryMCV9tmFuZEsm2Y3gRxola&limit=25");
 
-xhr.done(function(data) { console.log("success got data", data); });
+    xhr.done(function(response) 
+    
+    { console.log("success got data", response);
+    
+     var giffs = response.data
+    
+     for (i in giffs){
+         $('.inner').append("<img src='"+giffs[i].images.original.url+"' >")
+     }
+    });
 
-
-console.log("test")
-
-
+}
 
